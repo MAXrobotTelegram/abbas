@@ -1,65 +1,65 @@
-local function run(msg, matches)
-  if matches[1]:lower() == "github>" then
-    local dat = https.request("https://api.github.com/repos/"..matches[2])
-    local jdat = JSON.decode(dat)
-    if jdat.message then
-      return "آدرس وارد شده صحیح نیست."
-      end
-    local base = "curl 'https://codeload.github.com/"..matches[2].."/zip/master'"
-    local data = io.popen(base):read('*all')
-    f = io.open("file/github.zip", "w+")
-    f:write(data)
-    f:close()
-    return send_document("chat#id"..msg.to.id, "file/github.zip", ok_cb, false)
-  else
-    local dat = https.request("https://api.github.com/repos/"..matches[2])
-    local jdat = JSON.decode(dat)
-    if jdat.message then
-      return "آدرس وارد شده صحیح نیست."
-      end
-    local res = https.request(jdat.owner.url)
-    local jres = JSON.decode(res)
-    send_photo_from_url("chat#id"..msg.to.id, jdat.owner.avatar_url)
-    return "مشخصات اکانت:\n"
-      .."نام اکانت: "..(jres.name or "-----").."\n"
-      .."يوزرنيم: "..jdat.owner.login.."\n"
-      .."نام شرکت: "..(jres.company or "-----").."\n"
-      .."وبسايت: "..(jres.blog or "-----").."\n"
-      .."ايميل: "..(jres.email or "-----").."\n"
-      .."موقعيت مکاني: "..(jres.location or "-----").."\n"
-      .."تعداد پروژه: "..jres.public_repos.."\n"
-      .."تعداد دنبال کننده: "..jres.followers.."\n"
-      .."تعداد دنبال شده: "..jres.following.."\n"
-      .."تاريخ ساخت اکانت: "..jres.created_at.."\n"
-      .."بيوگرافي: "..(jres.bio or "-----").."\n\n"
-      .."مشخصات پروژه:\n"
-      .."نام پروژه: "..jdat.name.."\n"
-      .."صفحه گيتهاب: "..jdat.html_url.."\n"
-      .."پکيج سورس: "..jdat.clone_url.."\n"
-      .."وبلاگ پروژه: "..(jdat.homepage or "-----").."\n"
-      .."تاريخ ايجاد: "..jdat.created_at.."\n"
-      .."آخرين آپديت: "..(jdat.updated_at or "-----").."\n"
-      .."زبان برنامه نويسي: "..(jdat.language or "-----").."\n"
-      .."سايز اسکريپت: "..jdat.size.."\n"
-      .."ستاره ها: "..jdat.stargazers_count.."\n"
-      .."بازديدها: "..jdat.watchers_count.."\n"
-      .."انشعابات: "..jdat.forks_count.."\n"
-      .."مشترکين: "..jdat.subscribers_count.."\n"
-      .."درباره ي پروژه:\n"..(jdat.description or "-----").."\n"
-  end
+local function run (msg, matches)
+  if matches [1]: lower () == "github>" then
+    local dat = https.request ( "https://api.github.com/repos/" ..matches [2])
+    local jdat = JSON.decode (dat)
+    if jdat.message then
+      return "address is not correct."
+      end
+    local base = "curl 'https://codeload.github.com/"..matches[2].."/zip/master'"
+    local data = io.popen (base): read ( '* all')
+    f = io.open ( "file / github.zip", "w +")
+    f: write (data)
+    f: close ()
+    return send_document ( "chat # id" .. msg.to.id, "file / github.zip", ok_cb, false)
+  else
+    local dat = https.request ( "https://api.github.com/repos/" ..matches [2])
+    local jdat = JSON.decode (dat)
+    if jdat.message then
+      return "address is not correct."
+      end
+    local res = https.request (jdat.owner.url)
+    local jres = JSON.decode (res)
+    send_photo_from_url ( "chat # id" .. msg.to.id, jdat.owner.avatar_url)
+    return "View account: \ n"
+      .. "Account name:" .. (jres.name or "-----") .. "\ n"
+      .. "Username:" ..jdat.owner.login .. "\ n"
+      .. "Name:" .. (jres.company or "-----") .. "\ n"
+      .. "Website:" .. (jres.blog or "-----") .. "\ n"
+      .. "Email:" .. (jres.email or "-----") .. "\ n"
+      .. "Location:" .. (jres.location or "-----") .. "\ n"
+      .. "The number of projects:" ..jres.public_repos .. "\ n"
+      .. "The number of followers:" ..jres.followers .. "\ n"
+      .. "The number followed by:" ..jres.following .. "\ n"
+      .. "On the construction account:" ..jres.created_at .. "\ n"
+      .. "Biography:" .. (jres.bio or "-----") .. "\ n \ n"
+      .. "View project: \ n"
+      .. "Project Name:" ..jdat.name .. "\ n"
+      .. "GitHub page:" ..jdat.html_url .. "\ n"
+      .. "Pkgsrc:" ..jdat.clone_url .. "\ n"
+      .. "Blog of the project:" .. (jdat.homepage or "-----") .. "\ n"
+      .. "Created:" ..jdat.created_at .. "\ n"
+      .. "Last Updated on:" .. (jdat.updated_at or "-----") .. "\ n"
+      .. "Programming language:" .. (jdat.language or "-----") .. "\ n"
+      .. "Size script:" ..jdat.size .. "\ n"
+      .. "Stars:" ..jdat.stargazers_count .. "\ n"
+      .. "Hits:" ..jdat.watchers_count .. "\ n"
+      .. "Split:" ..jdat.forks_count .. "\ n"
+      .. "Customer:" ..jdat.subscribers_count .. "\ n"
+      .. "About project: \ n" .. (jdat.description or "-----") .. "\ n"
+  end
 end
 
 return {
-  description = "Github Informations",
-  usagehtm = '<tr><td align="center">github پروژه/اکانت</td><td align="right">آدرس گیتهاب را به صورت پروژه/اکانت وارد کنید<br>مثال: github shayansoft/umbrella</td></tr>'
-  ..'<tr><td align="center">github> پروژه/اکانت</td><td align="right">با استفاده از این دستور، میتوانید سورس پروژه ی مورد نظر را دانلود کنید. آدرس پروژه را مثل دستور بالا وارد کنید</td></tr>',
-  usage = {
-    "github (account/proje) : مشخصات پروژه و اکانت",
-    "github> (account/proje) : دانلود سورس",
-    },
-  patterns = {
-    "^([Gg]ithub>) (.*)",
-    "^([Gg]ithub) (.*)",
-    },
-  run = run
+  description = "Github Informations",
+  usagehtm = '<tr> <td align = "center"> github project / account </ td> <td align = "right"> address GitHub for project / account Enter <br> example: github shayansoft / umbrella < / td> </ tr> '
+  .. '<Tr> <td align = "center"> github> Project / Account </ td> <td align = "right"> With this command, you can download the source code to the project. Enter the address projects like high command </ td> </ tr> ',
+  usage = {
+    "Github (account / proje): View project and account",
+    "Github> (account / proje): Download source",
+    },
+  patterns = {
+    "^ ([Gg] ithub>) (. *)",
+    "^ ([Gg] ithub) (. *)",
+    },
+  run = run
 }
