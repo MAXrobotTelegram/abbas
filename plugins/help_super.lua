@@ -1,154 +1,153 @@
 local function run(msg, matches)
 if is_momod(msg) and msg.to.type == "channel" then        
   local text = [[
-🔴لیست کامند های سوپر گروه حفاظت شده توسد بات نورت
+
 
 💢 !info
-تمامی اطلاعات راجبع سوپر گروه را نشان میدهد
+All information is about Super Group shows
 
 💢 !admins
-لیست ادمین های سوپر گروه
+Admin list of Super Group
 
 💢!owner
-نام صاحب سوپر گروه
+The name of the owner of Super Group
 
 💢 !modlist
-لیست مدیر های سوپر گروه
+Please list the Super Group
 
 💢!bots
-لیست بات های سوپر گروه
+Bot List Super Group
 
 !who
-لیست تمامی افراد عضو سوپر گروه
+List all the members of Super Group
 
 💢 !block
-اخراج کردن و بن کردن یک یوزر از سوپر گروه (بصورت رسمی از سوی تلگرام)
+Expulsion and ban a user of Super Group (formally the Telegram)
 
 💢 !ban
-بن کردن یک نفر از سوپرگروه (بصورت غیر رسمی از سمت بات)
+Ben the one of Super Group (unofficially from the Baht)
 
 💢 !unban
-آن بن کردن یک نفر از سوپر گروه
+The son of the one of Super Group
 
 💢 !id
-نشان دادن آیدی سوپر گروه / آیدی شخص
-- برای ایدی یوزر ها: !id @UserName
+Show ID Super group / individual ID
+- For the user Idi are:! Id @UserName
 
 💢 !id from
-دریافت آیدی از پیامی که فوروارد شده
+Get the ID of the message that was forwarded
 
 💢 !kickme
-اخراج کردن یک نفر از سوپر گروه
+Fired up one of Super Group
 
 💢 !setowner
-تعویض صاحب سوپر گروه
+Replace the Super Group
 
 💢 !promote [username|id]
-ترفیع درجه یک فرد به مدیر
+A person promoted to director
 
 💢 !demote [username|id]
-تنزیل درجه یک فرد به عضو معمولی
+Demoted to an ordinary member
 
 💢 !setname
-تعویض نام سوپر گروه
+Rename Super Group
 
 💢 !setphoto
-تعویض عکس سوپر گروه
+Swap photos Super Group
 
 💢 !setrules
-نوشتن قوانین سوپر گروه
+Writing Rules Super Group
 
 💢!setabout
-نوشتن "درباره" سوپر گروه (بالای لیست ممبر ها می آید)
+Write "About" Super Group (membranes comes top of the list)
 
 💢 !save [value] <text>
-ذخیره سازی  اطلاعات اضافه در رابطه با چت
+Storage of additional information in relation to Chat
 
 💢 !get [value]
-دریافت همون چیزی که تو کامند بالایی ست کردید 😐
+The same thing is you get your high comment 😐
 
 💢 !newlink
-ساخت لینک جدید
+Construction of new link
 
 💢 !link
-دریافت لینک گروه
+Catch Link Group
 
 💢 !rules
-مشاهده قوانین گروه
+Group Rules
 
-💢 !lock [links|flood|spam|Arabic|member|rtl|sticker|contacts|strict]
-قفل کردن ستینگ گروه
-*RTL = راست چین (پیام های از راست به چپ)*
-*strict: enable strict settings enforcement (violating user will be kicked)*
+💢! Lock [links | flood | spam | Arabic | member | rtl | sticker | contacts | strict]
+Lock settings Group
+* RTL = Right Align (messages from right to left) *
+* Strict: enable strict settings enforcement (violating user will be kicked) *
 
-💢 !unlock [links|flood|spam|Arabic|member|rtl|sticker|contacts|strict]
-باز کردن ستینگ گروه
-*RTL = راست چین (پیام های از راست به چپ)*
-*strict: disable strict settings enforcement (violating user will not be kicked)*
+💢! Unlock [links | flood | spam | Arabic | member | rtl | sticker | contacts | strict]
+Open settings Group
+* RTL = Right Align (messages from right to left) *
+* Strict: disable strict settings enforcement (violating user will not be kicked) *
 
-💢 !mute [all|audio|gifs|photo|video|service]
-میوت (خفه) کردن
-- پیام های میوت شده درجا پاک میشوند
+💢! Mute [all | audio | gifs | photo | video | service]
+Miout (choke) off
+- Messages are immediately deleted Miout
 
-💢 !unmute [all|audio|gifs|photo|video|service]
-آن میوت کردن
-💢 !setflood [value]
-ست کردن تعداد پیام های پشت سر هم تا یوزر کیک شود
-- مثلا اگر 10 باشد, فردی 10 پیام پشت هم بفرستد, کیک میشود.
+💢! Unmute [all | audio | gifs | photo | video | service]
+Miout it out
+💢! Setflood [value]
+Is the number of consecutive messages to the user's cake
+- For example, if 10 individual 10 to also send the message, the cake.
 
-💢 !settings
-دریافت ستینگ سوپر گروه
+💢! Settings
+Download settings Super Group
 
-💢 !muteslist
-نشان دادن میوت های سوپر گروه
+💢! Muteslist
+Show Miout Super Group
 
-💢 !muteuser [username]
-خفه کردن یک کاربر در سوپر گروه
-- اگر کاربر خفه شده پیامی بفرستد, درجا پیام حذف میگردد
+💢! Muteuser [username]
+The strangling of a user in the Super Group
+- If the user smothered send messages, deleted messages situ
 
-💢 !mutelist
-لیست افراد میوت شده
+💢! Mutelist
+List of people Miout
 
-💢 !banlist
-لیست افراد بن شده
+💢! Banlist
+List of Banned
 
-💢 !clean [rules|about|modlist|mutelist]
-پاک کردن یکی از متغیر های بالا
+💢! Clean [rules | about | modlist | mutelist]
+Remove one of the above variables
 
-💢 !del
-پاک کردن یک مسیج (ریپلای کنید)
+💢! Del
+Delete a message (not Ryplay)
 
-💢 !public [yes|no]
-ویزیبیلیتی پیام ها
+💢! Public [yes | no]
+Vyzybylyty messages
 
-💢 !res [username]
-دریافت نام و آیدی یک یوزر با یوزرنیم (مثلا @UserName)
+💢! Res [username]
+Get the name and ID of a user with the username (eg @UserName)
 
-💢 !addword [word]
-سانسور کردن یک کلمه
+💢! Addword [word]
+Censor a word
 
-💢 !remword [word]
-پاک کردن یک کلمه از لیست سانسورها
+💢! Remword [word]
+Delete a word from the list of censors
 
-💢 !badwords 
-لیست کلمات سانسور شده. 
+💢! Badwords
+List of censored words.
 
-💢 !log
-دریافت لاگ گروه
-*مثلا سرچ کنید برای دلیل کیک شدن [#RTL|#spam|#lockmember]
+💢! Log
+Download logs Group
+* For example, if you search for a cake of [#RTL | #spam | #lockmember]
 
 
-🔴شما میتوانید از هر سه کاراکتر # و ! و / در آغاز کامند ها استفاده کنید.
+🔴Shma just three characters # and! And / or at the beginning of the command to use.
 
-🔴فقط صاحب سوپر گروه از طریق ادد ممبر میتواند کاربر ادد کند.
+🔴Fqt owner of Super Group through Adad Adad users can be a member of.
 
-🔴فقط مدیر ها و صاحب سوپر گروه میتواند از بلاک, بن, آنبن, لینک جدید, دریافت لینک, ست کردن عکس, ست کردن نام, قفل, باز, ست کردن قوانین, ست کردن توضیحات و ستینگ استفاده کند.
+🔴Fqt director and owner of Super Group can block, Ben, Nbn, new links, links, sets out the photos, is a name, lock, unlock, set the rules, is a description and use settings.
 
-🔴فقط صاحب گروه و ادمین ها میتواند از کامند های res, promote, setowner استفاده کند.
+🔴Fqt owner and admins can command the res, promote, setowner use.
 
-—فارسیسازی اختصاصی نورت—
 
-لینک کانال: @NortTeaM
+Channel link: @TeleNERObot
 ]]
     send_msg("channel#id"..msg.to.id, text, ok_cb, false)
   end
