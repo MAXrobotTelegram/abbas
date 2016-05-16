@@ -1,12 +1,12 @@
 local function run(msg, matches)
 if msg.to.type == "chat" or "channel" or "user"  then
   local text = [[
-💠 دستورات ربات ضد اسپم نورت 💠
+💠 Anti-spam bot commands TeleNERO 💠
 —------------------------—
-🔹Plugins directory 
+🔹 Plugins directory 
 /helps
 
-�Lists general guide robot
+🔹 lists general guide robot
 /help_all
 
 🔹 Private Guide listings
