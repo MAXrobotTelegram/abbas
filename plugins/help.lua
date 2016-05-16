@@ -3,13 +3,13 @@ if msg.to.type == "chat" or "channel" or "user"  then
   local text = [[
 💠 دستورات ربات ضد اسپم نورت 💠
 —------------------------—
-🔹لیست راهنمای پلاگین ها 
+🔹Plugins directory 
 /helps
 
-🔸لیست راهنمای کلی ربات 
+�Lists general guide robot
 /help_all
 
-🔹 لیست راهنمای خصوصی 
+🔹 Private Guide listings
 /help_pv
 
 —----------------------------
